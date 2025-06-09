@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FatecadsApplication<fatecads>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.fatecads.fatecads.FatecadsApplication",
+            "projectName": "fatecads",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

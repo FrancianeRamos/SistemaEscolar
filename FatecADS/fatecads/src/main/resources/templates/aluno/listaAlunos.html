@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Lista de Alunos">
+    <meta name="keywords" content="Alunos, Fatec, FatecADS, Gerenciamento Escolar">
+    <meta name="author" content="FatecADS">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+    <style>
+        body {
+            background: #f4f6fb;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        h1, h3 {
+            text-align: center;
+            color: #2d3a4b;
+        }
+        .table-container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+        }
+        th, td {
+            padding: 14px 10px;
+            text-align: center;
+        }
+        th {
+            background: #2563eb;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 3px solid #1e40af;
+        }
+        tr:nth-child(even) {
+            background: #f4f6fb;
+        }
+        tr:hover {
+            background: #e0e7ff;
+            transition: background 0.2s;
+        }
+        td {
+            font-size: 1rem;
+            color: #2d3a4b;
+        }
+        .actions a {
+            margin: 0 6px;
+            text-decoration: none;
+            color: #2563eb;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 5px;
+            background: #e0e7ff;
+            transition: background 0.2s, color 0.2s;
+        }
+        .actions a:hover {
+            background: #2563eb;
+            color: #fff;
+        }
+        @media (max-width: 600px) {
+            .table-container {
+                padding: 10px 2px;
+            }
+            th, td {
+                padding: 8px 4px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Alunos</h1>
+    <h3><a href="/alunos/criar">Cadastrar Novo Aluno</a></h3>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Endereço</th>
+                    <th>Telefone</th>
+                    <th>RA</th>
+                    <th colspan="2">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="aluno : ${alunos}">
+                    <td th:text="${aluno.idAluno}">*</td>
+                    <td th:text="${aluno.nomeAluno}">*</td>
+                    <td th:text="${aluno.endAluno}">*</td>
+                    <td th:text="${aluno.telAluno}">*</td>
+                    <td th:text="${aluno.raAluno}">*</td>
+                    <td class="actions">
+                        <a th:href="@{/alunos/editar/{id}(id=${aluno.idAluno})}">Editar</a>
+                        <a th:href="@{/alunos/excluir/{id}(id=${aluno.idAluno})}">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
