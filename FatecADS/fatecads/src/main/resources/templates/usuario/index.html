@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo | Sistema Escolar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(120deg, #1976d2 0%, #42a5f5 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+        .welcome-container {
+            max-width: 480px;
+            margin: 80px auto;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            padding: 48px 36px 36px 36px;
+            text-align: center;
+        }
+        .welcome-container h1 {
+            color: #1976d2;
+            margin-bottom: 18px;
+            font-weight: 700;
+            font-size: 2.2em;
+        }
+        .welcome-container p {
+            color: #455a64;
+            font-size: 1.15em;
+            margin-bottom: 32px;
+        }
+        .welcome-container .btn {
+            background: #1976d2;
+            color: #fff;
+            padding: 14px 0;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .welcome-container .btn:hover {
+            background: #125ea7;
+        }
+        .welcome-container .footer {
+            margin-top: 28px;
+            font-size: 0.97em;
+            color: #607d8b;
+        }
+        @media (max-width: 480px) {
+            .welcome-container {
+                margin: 32px 8px;
+                padding: 28px 8px 20px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Bem-vindo!</h1>
+        <p>
+            Olá, seja bem-vindo ao <strong>Sistema Escolar</strong>.<br>
+            Utilize o menu para acessar as funcionalidades do sistema.<br>
+            Se precisar de ajuda, entre em contato com o suporte.
+        </p>
+        <a href="/dashboard" class="btn">Ir para o Painel</a>
+        <a href="/index2.html" class="btn" style="margin-top: 16px; background: #42a5f5;">Realizar Login</a>
+        <div class="footer">
+            © 2024 Sistema Escolar
+        </div>
+    </div>
+</body>
+</html>
