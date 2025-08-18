@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Fatec ADS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(120deg, #2980b9, #6dd5fa, #ffffff);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .login-container h2 {
+            text-align: center;
+            color: #2980b9;
+            margin-bottom: 1rem;
+        }
+        .login-container label {
+            font-size: 1rem;
+            color: #34495e;
+            margin-bottom: 0.3rem;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #b2bec3;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border: 1.5px solid #2980b9;
+        }
+        .login-container button {
+            background: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .login-container button:hover {
+            background: #2573a6;
+        }
+        .login-container .extra {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #636e72;
+        }
+        @media (max-width: 400px) {
+            .login-container {
+                padding: 1.2rem 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form class="login-container" method="post" action="/login">
+        <h2>Login Fatec ADS</h2>
+        <div>
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+        </div>
+        <div>
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+        </div>
+        <button type="submit">Entrar</button>
+        <div class="extra">
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+    </form>
+</body>
+</html>

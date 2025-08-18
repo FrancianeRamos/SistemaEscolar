@@ -1,124 +1,266 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Alunos</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f8f9fa;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
         }
 
         h1 {
             text-align: center;
-            margin-top: 40px;
-            color: #333;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            letter-spacing: 0.5px;
         }
 
         form {
-            background: #fff;
-            max-width: 400px;
-            margin: 40px auto;
-            padding: 32px 24px;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 24px;
+        }
+
+        .form-group {
+            position: relative;
         }
 
         label {
-            margin-bottom: 4px;
-            color: #444;
-            font-size: 1rem;
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: block;
+            letter-spacing: 0.3px;
         }
 
-        input[type="text"] {
-            padding: 8px 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
             font-size: 1rem;
-            background: #fafbfc;
-            transition: border 0.2s;
+            background: #fff;
+            transition: all 0.3s ease;
+            font-family: inherit;
         }
 
-        input[type="text"]:focus {
-            border-color: #007bff;
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #667eea;
             outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-1px);
         }
 
-        input[type="submit"],
-        button[type="button"] {
-            padding: 10px 0;
-            border: none;
-            border-radius: 4px;
-            background: #007bff;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-            margin-top: 8px;
-            transition: background 0.2s;
-        }
-
-        input[type="submit"]:hover,
-        button[type="button"]:hover {
-            background: #0056b3;
-        }
-
-        .btn-voltar {
-            background: #6c757d;
-            margin-left: 8px;
-        }
-
-        .btn-voltar:hover {
-            background: #495057;
-        }
-
-        a {
-            text-decoration: none;
-            display: inline-block;
+        input[type="text"]:valid,
+        input[type="password"]:valid {
+            border-color: #28a745;
         }
 
         .form-actions {
             display: flex;
-            gap: 8px;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        input[type="submit"],
+        .btn-cancel {
+            flex: 1;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        input[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-cancel {
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 2px solid #e9ecef;
+        }
+
+        .btn-cancel:hover {
+            background: #e9ecef;
+            color: #495057;
+            transform: translateY(-2px);
+        }
+
+        /* Animação de loading */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading input[type="submit"] {
+            background: #ccc;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            input[type="submit"],
+            .btn-cancel {
+                padding: 14px 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                margin: 10px;
+                padding: 25px 15px;
+            }
         }
     </style>
 </head>
-
 <body>
-    <h1>Cadastrar Alunos</h1>
-    <form th:action="@{/alunos/salvar}" method="POST" th:object="${aluno}">
-        <input type="hidden" name="idAluno" th:field="*{idAluno}" readonly />
+    <div class="container">
+        <h1>📚 Cadastro de Alunos</h1>
+        <form th:action="@{/usuarios/salvar}" method="post" th:object="{usuario}" id="alunoForm">
+            <input type="hidden" th:field="*{idUsuario}">
 
-        <label for="nomeAluno">Nome:</label>
-        <input type="text" id="nomeAluno" name="nomeAluno" th:field="*{nomeAluno}" required>
+            <div class="form-group">
+                <label for="nomeUsuario">👤 Nome Completo</label>
+                <input type="text" th:field="*{nomeUsuario}" id="nomeUsuario" 
+                       placeholder="Digite o nome completo do aluno" 
+                       required 
+                       minlength="2" 
+                       maxlength="100" />
+            </div>
 
-        <label for="endAluno">Endereço:</label>
-        <input type="text" id="endAluno" name="endAluno" th:field="*{endAluno}" required>
+            <div class="form-group">
+                <label for="cpfUsuario">🆔 CPF</label>
+                <input type="text" th:field="*{cpfUsuario}" id="cpfUsuario" 
+                       placeholder="000.000.000-00" 
+                       required 
+                       pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+                       title="Digite o CPF no formato: 000.000.000-00" />
+            </div>
 
-        <label for="telAluno">Telefone:</label>
-        <input type="text" id="telAluno" name="telAluno" th:field="*{telAluno}" required>
+            <div class="form-group">
+                <label for="loginUsuario">📧 Login/Email</label>
+                <input type="text" th:field="*{loginUsuario}" id="loginUsuario" 
+                       placeholder="Digite o email ou login" 
+                       required 
+                       minlength="3" 
+                       maxlength="50" />
+            </div>
 
-        <label for="raAluno">RA:</label>
-        <input type="text" id="raAluno" name="raAluno" th:field="*{raAluno}" required>
+            <div class="form-group">
+                <label for="senhaUsuario">🔒 Senha</label>
+                <input type="password" th:field="*{senhaUsuario}" id="senhaUsuario" 
+                       placeholder="Digite uma senha segura" 
+                       required 
+                       minlength="6" 
+                       maxlength="20"
+                       title="A senha deve ter entre 6 e 20 caracteres" />
+            </div>
 
-        <label for="idCurso">Curso:</label>
-        <select id="idCurso" th:field="*{curso}">
-            <option value="" disabled selected>Selecione o curso</option>
-            <option th:each="curso : ${cursos}" th:value="${curso.idCurso}" th:text="${curso.nomeCurso}">
-            </option>
-        </select>
+            <input type="hidden" th:field="*{role}" value="ROLE_USER"/>
+            
+            <div class="form-actions">
+                <a href="/alunos" class="btn-cancel">❌ Cancelar</a>
+                <input type="submit" value="💾 Salvar Aluno" id="submitBtn">
+            </div>
+        </form>
+    </div>
 
-        <div class="form-actions">
-            <input type="submit" name="cadastrar" value="Cadastrar">
-            <a href="/alunos/listar"><button type="button" class="btn-voltar">Voltar</button></a>
-        </div>
-    </form>
+    <script>
+        // Formatação automática do CPF
+        document.getElementById('cpfUsuario').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Feedback visual no envio do formulário
+        document.getElementById('alunoForm').addEventListener('submit', function() {
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.querySelector('.container');
+            
+            submitBtn.value = '⏳ Salvando...';
+            form.classList.add('loading');
+        });
+
+        // Validação de email/login
+        document.getElementById('loginUsuario').addEventListener('blur', function(e) {
+            const email = e.target.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && emailRegex.test(email)) {
+                e.target.style.borderColor = '#28a745';
+            } else if (email) {
+                e.target.style.borderColor = '#dc3545';
+            }
+        });
+    </script>
 </body>
-
 </html>
