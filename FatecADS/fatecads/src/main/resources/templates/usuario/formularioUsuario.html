@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Usuário</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(120deg, #2980b9, #6dd5fa, #ffffff);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .form-container {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+            max-width: 400px;
+            width: 100%;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2980b9;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #34495e;
+            font-weight: 500;
+        }
+        input, select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #b2bec3;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: #f7fafd;
+            transition: border-color 0.2s;
+        }
+        input:focus, select:focus {
+            border-color: #2980b9;
+            outline: none;
+        }
+        .form-actions {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        button {
+            background: #2980b9;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #2573a6;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Cadastro de Usuário</h2>
+        <form action="#" method="post">
+            <div class="form-group">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+            <div class="form-group">
+                <label for="tipo">Tipo de Usuário</label>
+                <select id="tipo" name="tipo" required>
+                    <option value="">Selecione...</option>
+                    <option value="aluno">Aluno</option>
+                    <option value="professor">Professor</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit">Cadastrar</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
