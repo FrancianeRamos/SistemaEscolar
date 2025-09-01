@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class FatecadsApplication {
-
-	public static void main(String[] args) {
-		SpringApplication.run(FatecadsApplication.class, args);
-	}
-
+    public static void main(String[] args) {
+        SpringApplication.run(FatecadsApplication.class, args);
+    }
 }

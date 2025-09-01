@@ -21,7 +21,7 @@ public class UsuarioController {
     @GetMapping("/criar")
     public String criarFormUsuario(Model model) {
         model.addAttribute("usuario", new Usuario());
-        return "formUsuario";
+        return "usuario/formularioUsuario";
     }
 
     @PostMapping("/salvar")
