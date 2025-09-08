@@ -182,12 +182,12 @@
 <body>
     <div class="container">
         <h1>📚 Cadastro de Alunos</h1>
-        <form th:action="@{/usuarios/salvar}" method="post" th:object="{usuario}" id="alunoForm">
-            <input type="hidden" th:field="*{idUsuario}">
+        <form th:action="@{/alunos/salvar}" method="post" th:object="${aluno}">
+            <input type="hidden" th:field="*{idAluno}">
 
             <div class="form-group">
-                <label for="nomeUsuario">👤 Nome Completo</label>
-                <input type="text" th:field="*{nomeUsuario}" id="nomeUsuario" 
+                <label for="nomeAluno">👤 Nome Completo</label>
+                <input type="text" th:field="*{nomeAluno}" id="nomeAluno" 
                        placeholder="Digite o nome completo do aluno" 
                        required 
                        minlength="2" 
@@ -195,34 +195,37 @@
             </div>
 
             <div class="form-group">
-                <label for="cpfUsuario">🆔 CPF</label>
-                <input type="text" th:field="*{cpfUsuario}" id="cpfUsuario" 
-                       placeholder="000.000.000-00" 
-                       required 
-                       pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-                       title="Digite o CPF no formato: 000.000.000-00" />
+                <label for="endAluno">🆔 Endereço do Aluno</label>
+                <input type="text" th:field="*{endAluno}" id="endAluno" 
+                       placeholder="Digite o endereço do aluno" 
+                       required />
             </div>
 
             <div class="form-group">
-                <label for="loginUsuario">📧 Login/Email</label>
-                <input type="text" th:field="*{loginUsuario}" id="loginUsuario" 
-                       placeholder="Digite o email ou login" 
+                <label for="telAluno">📧 Telefone do Aluno</label>
+                <input type="text" th:field="*{telAluno}" id="telAluno" 
+                       placeholder="Digite o telefone do aluno" 
                        required 
                        minlength="3" 
                        maxlength="50" />
             </div>
 
             <div class="form-group">
-                <label for="senhaUsuario">🔒 Senha</label>
-                <input type="password" th:field="*{senhaUsuario}" id="senhaUsuario" 
-                       placeholder="Digite uma senha segura" 
+                <label for="raAluno">🔒 RA</label>
+                <input type="text" th:field="*{raAluno}" id="raAluno" 
+                       placeholder="Digite o RA do aluno" 
                        required 
                        minlength="6" 
-                       maxlength="20"
-                       title="A senha deve ter entre 6 e 20 caracteres" />
+                       maxlength="20" />
             </div>
-
-            <input type="hidden" th:field="*{role}" value="ROLE_USER"/>
+            <div class="form-group">
+                <label for="curso">🎓 Curso</label>
+                <select th:field="*{curso}" id="curso" required>
+                    <option value="" disabled selected>Selecione um curso</option>
+                    <option th:each="curso : ${cursos}" 
+                            th:value="${curso.idCurso}" 
+                            th:text="${curso.nomeCurso}"></option>
+                </select>
             
             <div class="form-actions">
                 <a href="/alunos" class="btn-cancel">❌ Cancelar</a>
@@ -232,14 +235,7 @@
     </div>
 
     <script>
-        // Formatação automática do CPF
-        document.getElementById('cpfUsuario').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d)/, '$1.$2');
-            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-            e.target.value = value;
-        });
+      
 
         // Feedback visual no envio do formulário
         document.getElementById('alunoForm').addEventListener('submit', function() {

@@ -41,7 +41,7 @@ public class AlunoController {
     
     //Método para abrir o formulário de criação de alunos
     @GetMapping("/criar")
-    public String criarFrom( Model model) {
+    public String criarFrom(Model model) {
         //adiciona um novo aluno ao model
         List<Curso> cursos = cursoService.findAll();
         //Adiciona a lista de cursos ao model
