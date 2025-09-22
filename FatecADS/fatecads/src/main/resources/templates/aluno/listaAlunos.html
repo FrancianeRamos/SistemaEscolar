@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Alunos</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background: #f4f6fb;
@@ -68,7 +69,58 @@
             background: #2563eb;
             color: #fff;
         }
+        
+        /* Botão Voltar */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .back-button i {
+            font-size: 1rem;
+        }
+        
+        /* Header com espaçamento para o botão */
+        .page-header {
+            margin-top: 60px;
+            padding: 20px;
+        }
+        
         @media (max-width: 600px) {
+            .back-button {
+                position: relative;
+                top: auto;
+                left: auto;
+                margin: 20px auto;
+                display: flex;
+                justify-content: center;
+                width: fit-content;
+            }
+            
+            .page-header {
+                margin-top: 20px;
+            }
+            
             .table-container {
                 padding: 10px 2px;
             }
@@ -80,8 +132,16 @@
     </style>
 </head>
 <body>
-    <h1>Lista de Alunos</h1>
-    <h3><a href="/alunos/criar">Cadastrar Novo Aluno</a></h3>
+    <!-- Botão Voltar -->
+    <a href="/home" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Voltar ao Início
+    </a>
+    
+    <div class="page-header">
+        <h1>Lista de Alunos</h1>
+        <h3><a href="/alunos/criar">Cadastrar Novo Aluno</a></h3>
+    </div>
     <div class="table-container">
         <table>
             <thead>

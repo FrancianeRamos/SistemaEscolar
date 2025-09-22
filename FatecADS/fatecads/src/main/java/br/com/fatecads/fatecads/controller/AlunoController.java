@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.fatecads.fatecads.dto.AlunoTelefone;
 import br.com.fatecads.fatecads.entity.Aluno;
 import br.com.fatecads.fatecads.entity.Curso;
 import br.com.fatecads.fatecads.service.CursoService;
@@ -85,6 +86,15 @@ public class AlunoController {
         //Retorna a página do formulário de alunos
         return "aluno/formularioAluno";
     }
-    
+
+    @GetMapping("/listar-nome-telefone")
+    public String listarNomeTelefone(Model model) {
+        // Busca nomes e telefones dos alunos
+        List<AlunoTelefone> alunos = alunoService.buscarNomeTelefone();
+        // Adiciona a lista ao modelo
+        model.addAttribute("alunos", alunos);
+        // Retorna a página de lista de telefones
+        return "aluno/listaNomeTelefone";
+    }
     
 }
